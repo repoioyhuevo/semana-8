@@ -1,7 +1,9 @@
 package com.example.semana8;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProvider;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
@@ -15,9 +17,9 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 public class MainActivity extends AppCompatActivity {
-
     Button btnDescargar;
     ImageView imagen;
+    Button sensores;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +28,15 @@ public class MainActivity extends AppCompatActivity {
 
         btnDescargar = findViewById(R.id.descargarImagen);
         imagen = findViewById(R.id.imagen);
+        sensores = findViewById(R.id.sensorRotacion);
+
+        sensores.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, SensorRotacion.class);
+                startActivity(intent);
+            }
+        });
 
         btnDescargar.setOnClickListener(new View.OnClickListener() {
             @Override
